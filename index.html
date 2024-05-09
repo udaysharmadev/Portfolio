@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uday Sharma - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        .bg {
+            background-color: #1f1f1f;
+        }
+
+        hr {
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            width: 100%;
+            margin: 25px auto;
+            columns: 4;
+            padding: 15px;
+            column-gap: 25px;
+        }
+
+        .container .box {
+            width: 100%;
+            margin-bottom: 15px;
+            break-inside: avoid;
+        }
+
+        .container .box img {
+            max-width: 100%;
+            border-radius: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        @media (max-width: 1500px) {
+            .container {
+                width: calc(100% - 40px);
+                columns: 4;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                width: calc(100% - 40px);
+                columns: 4;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                columns: 3;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                columns: 2;
+            }
+        }
+
+
+        .containerr {
+            width: 100%;
+            margin: 25px auto;
+            columns: 3;
+            padding: 15px;
+            column-gap: 25px;
+        }
+
+        .containerr .boxx {
+            width: 100%;
+            margin-bottom: 15px;
+            break-inside: avoid;
+        }
+
+        .containerr .boxx img {
+            max-width: 100%;
+            border-radius: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        @media (max-width: 1200px) {
+            .containerr {
+                width: calc(100% - 40px);
+                columns: 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .containerr {
+                columns: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .containerr {
+                columns: 2;
+            }
+        }
+
+        .boxx {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .boxx:hover .name {
+            opacity: 1;
+        }
+
+
+        /* For the button to appear fixed at the bottom right */
+.fixed {
+    position: fixed;
+}
+
+/* Styling for the back to top button */
+#back-to-top-btn {
+    transition: opacity 0.3s;
+}
+#back-to-top-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+    </style>
+</head>
+
+<body class="bg-black h-full flex flex-col">
+    <main class="w-full h-screen flex flex-col sm:flex-row justify-between gap-10 p-3 sm:p-6 -mb-4 sm:-mb-5">
+        <div class="heroleft w-full sm:w-1/2">
+            <div class="hireme bg text-white py-5 sm:px-10 px-5 rounded-xl w-full relative transition duration-300 ease-in-out transform hover:bg-blue-700 hover:shadow-lg">
+                <h1 class="text-3xl sm:text-5xl font-semibold font-poppins w-full">Bring Your Web Vision To Life With Us</h1>
+                <a href="" class="absolute right-4 bottom-3 bg-blue-700 p-2 rounded-xl font-semibold font-poppins sm:right-10 sm:bottom-5 transition duration-300 ease-in-out transform hover:scale-105">
+                    <button>Hire Me 👋</button>
+                </a>
+            </div>
+            
+            <div class="threebox w-full flex flex-col md:flex-row justify-between font-poppins text-white gap-5 mt-5">
+                <div class="exp bg-yellow-400 w-full md:w-1/3 flex flex-col justify-between items-center py-16 rounded-xl">
+                    <h1 class="font-semibold text-3xl"><span class="count" data-target="3">0</span>+</h1>
+                    <p class="font-medium text-gray-100 text-center">Years Experience</p>
+                </div>
+                <div class="pro bg-blue-700 w-full md:w-1/3 flex flex-col justify-between items-center py-16 rounded-xl">
+                    <h1 class="font-semibold text-3xl"><span class="count" data-target="28">0</span>+</h1>
+                    <p class="font-medium text-gray-100 text-center">Projects Completed</p>
+                </div>
+                <div class="clients bg-red-700 w-full md:w-1/3 flex flex-col justify-between items-center py-16 rounded-xl">
+                    <h1 class="font-semibold text-3xl"><span class="count" data-target="17">0</span>+</h1>
+                    <p class="font-medium text-gray-100 text-center">Clients Served</p>
+                </div>
+            </div>
+            
+
+
+
+            <section class="font-poppins w-full sm:w-screen xl:w-[110%]">
+                <div class="overview bg rounded-xl px-5 py-4 mt-5">
+                    <div class="upar flex justify-between items-center">
+                        <h1
+                            class="text-white text-xl font-semibold sm:text-2xl transition-colors duration-300 hover:text-blue-500">
+                            Recent Works</h1>
+                        <a class="text-gray-200 text-lg sm:text-xl transition-opacity duration-300 hover:opacity-50"
+                            href="#project">See All</a>
+                    </div>
+                    <div class="oimage mt-6 sm:mt-3 flex flex-col items-center justify-between gap-5 sm:flex-row">
+                        <img class="rounded-xl w-full h-40 sm:w-1/2 object-cover transition-transform duration-300 hover:scale-105"
+                            src="edusavvy.png" alt="">
+                        <img class="w-full rounded-xl h-40 sm:w-1/2 object-cover transition-transform duration-300 hover:scale-105"
+                            src="agriconnect.jpg" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <hr id="project">
+
+            <div class="head text-white font-bold bg mt-5 px-6 py-4 rounded-xl hover:shadow-lg">
+                <h1 class="text-3xl">Turning <span class="text-green-600">Ideas</span> into Innovation: Explore Our
+                    Projects!</h1>
+            </div>
+            <section class="project w-full sm:w-screen xl:w-[200%]  order-last sm:order-last font-poppins">
+                <div class="projects py-6 rounded-xl">
+                    <div class="flex flex-col gap-10 sm:flex-row">
+
+                        <div class="card w-full bg sm:w-screen xl:w-[53%]">
+                            <div>
+                                <img class="h-64 object-cover w-full"
+                                    src="https://export-download.canva.com/2Xtnw/DAGEeb2Xtnw/6/0/0001-391114399522299868.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20240505%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240505T195706Z&X-Amz-Expires=85707&X-Amz-Signature=81096208e62bbf53c5994c43e6bd95f1bfeddaf899231d79bf2e83cf0ee3bb26&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Untitled%2520design.png&response-expires=Mon%2C%2006%20May%202024%2019%3A45%3A33%20GMT"
+                                    alt="Project Image">
+                            </div>
+                            <div class="card-content">
+                                <div class="tit flex justify-between items-center">
+                                    <div class="left">
+                                        <h3
+                                            class="card-title bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
+                                            Edusavvy</h3>
+                                        <h3 class="card-description text-gray-400 -mt-4">Smart Education</h3>
+                                    </div>
+
+                                    <div class="right flex flex-row">
+                                        <a class="text-white bg-red-700 px-3 py-2 rounded-xl mr-2 transition duration-300 ease-in-out transform hover:scale-105"
+                                            href=""><button
+                                                class="flex items-center"><span class="hidden sm:block mr-2">Demo</span>
+                                                <i class="ri-live-line"></i></button></a>
+
+                                        <a class="text-white bg-blue-700 px-3 py-2 rounded-xl transition duration-300 ease-in-out transform hover:scale-105"
+                                            href="https://github.com/udaysharmadev/Edusavvy"><button
+                                                class="flex items-center"><span
+                                                    class="hidden sm:block mr-1">Github</span> <i
+                                                    class="ri-github-fill"></i></button></a>
+                                    </div>
+                                </div>
+
+                                <p class="card-description mb-3">Edusavvy served as a unique university community
+                                    platform, bridging buyers and sellers within the campus. It facilitated seamless
+                                    transactions and interactions, offering course bundles that catered to the academic
+                                    needs and interests of students. Through Edusavvy, students could access a wide
+                                    range of educational resources and materials, enhancing their learning experience.
+                                    The platform's community-driven approach fostered collaboration and knowledge
+                                    sharing among students, creating a dynamic and engaging learning environment.
+                                    Edusavvy aimed to simplify the process of buying and selling educational resources
+                                    within the university, promoting a culture of academic excellence and innovation.
+                                </p>
+                                <div class="card-languages">
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #3c12c4; color: white;">EJS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #1572B6; color: white;">CSS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #F7DF1E; color: black;">JavaScript</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #0868AC; color: white;">JQUERY</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #000000; color: white;">JSON</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #38B2AC; color: white;">TAILWIND</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #68A063; color: white;">NODE.JS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #000000; color: white;">EXPRESS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105" style="background-color: #4DB33D; color: white;">MONGO
+                                        DB</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #61DAFB; color: black;">AXIOS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #8B4513; color: white;">MULTER</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #6B4EA0; color: white;">PASSPORT</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #79D3FC; color: black;">Body-parser</span>
+                                </div>
+
+
+                                <div class="completion w-full bg-gray-300 h-5 mt-4 rounded-xl">
+                                    <div class="compin bg-blue-700 rounded-xl h-5 relative" style="width: 76%;">
+                                        <h1 class="absolute text-white right-1 text-sm font-semibold">76%</h1>
+                                    </div>
+                                </div>
+
+                                <h1 class="text-white text-2xl font-semibold mt-6">Prototype Screenshots 👇</h1>
+
+                                <div class="card-screenshots grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="p11(1).png" alt="Screenshot 1">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="p33(2).png" alt="Screenshot 2">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="p44(1).png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="p55(1).png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="p66(1).png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="p88(1).png" alt="Screenshot 3">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card w-full sm:w-1/2 bg sm:-mt-32 -mt-4">
+                            <img class="h-64 object-cover w-full"
+                                src="https://export-download.canva.com/2Xtnw/DAGEeb2Xtnw/4/0/0001-7003524553740762877.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20240506%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240506T030137Z&X-Amz-Expires=58513&X-Amz-Signature=d795e0e3e472ffc9bec4a0e341431fef9ca0d1c2e352c354fcd371bcfe6bb2bf&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Untitled%2520design.png&response-expires=Mon%2C%2006%20May%202024%2019%3A16%3A50%20GMT"
+                                alt="Project Image">
+                            <div class="card-content">
+                                <div class="tit flex justify-between items-center">
+                                    <div class="left">
+                                        <h3
+                                            class="card-title bg-gradient-to-r from-green-500 to-green-800 text-transparent bg-clip-text">
+                                            Agri Connect</h3>
+                                        <h3 class="card-description text-gray-400 -mt-4">Agriculture & Development</h3>
+                                    </div>
+
+                                    <div class="right flex flex-row">
+                                        <a class="text-white bg-red-700 px-3 py-2 rounded-xl mr-2 transition duration-300 ease-in-out transform hover:scale-105"
+                                            href=""><button
+                                                class="flex items-center"><span class="hidden sm:block mr-2">Demo</span>
+                                                <i class="ri-live-line"></i></button></a>
+
+                                        <a class="text-white bg-blue-700 px-3 py-2 rounded-xl transition duration-300 ease-in-out transform hover:scale-105"
+                                            href="https://github.com/udaysharmadev/Agri-Connect"><button
+                                                class="flex items-center"><span
+                                                    class="hidden sm:block mr-1">Github</span> <i
+                                                    class="ri-github-fill"></i></button></a>
+                                    </div>
+                                </div>
+                                <p class="card-description mb-3">Agriconnect revolutionized the agricultural sector by
+                                    directly connecting farmers with retailers, eliminating the need for intermediaries.
+                                    This innovative platform empowered farmers to sell their produce at fair prices
+                                    while providing retailers with a reliable and efficient supply chain. By bypassing
+                                    traditional middlemen, Agriconnect ensured that farmers received fair compensation
+                                    for their hard work while also offering retailers competitive prices. This direct
+                                    connection streamlined the entire process, reducing costs for both farmers and
+                                    retailers. Additionally, Agriconnect facilitated greater transparency in the
+                                    agricultural market, enabling farmers and retailers to make informed decisions based
+                                    on real-time data.</p>
+                                <div class="card-languages">
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #6433FF; color: white;">EJS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #1572B6; color: white;">CSS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #F7DF1E; color: black;">JavaScript</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #38B2AC; color: white;">TAILWIND</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #68A063; color: white;">NODE.JS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #000000; color: white;">EXPRESS</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105" style="background-color: #4DB33D; color: white;">MONGO
+                                        DB</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #8B4513; color: white;">MULTER</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105"
+                                        style="background-color: #6B4EA0; color: white;">PASSPORT</span>
+                                    <span class="card-language transition duration-300 ease-in-out transform hover:scale-105" style="background-color: #86B300; color: white;">AgriHub
+                                        API</span>
+                                </div>
+
+
+                                <div class="completion w-full bg-gray-300 h-5 mt-4 rounded-xl">
+                                    <div class="compin bg-green-700 rounded-xl h-5 relative" style="width: 41%;">
+                                        <h1 class="absolute text-white right-1 text-sm font-semibold">41%</h1>
+                                    </div>
+                                </div>
+
+                                <h1 class="text-white text-2xl font-semibold mt-6">Prototype Screenshots 👇</h1>
+
+                                <div class="card-screenshots grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac1.png" alt="Screenshot 1">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac2.png" alt="Screenshot 2">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac3.png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac4.png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac5.png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac6.png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac7.png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac8.png" alt="Screenshot 3">
+                                    <img class="object-cover w-full rounded-xl transition duration-300 ease-in-out transform hover:scale-105" src="ac9.png" alt="Screenshot 3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="Minipro rounded-xl w-full sm:w-screen xl:w-[200%] flex flex-col sm:flex-row">
+                <div class="mini w-full sm:w-screen xl:w-[53%] mr-8">
+                    <h3 class="card-title bg text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg">
+                        Some Dynamic <span class="text-red-700">Front-End</span> Mini Projects</h3>
+                    
+
+                        <div class="all grid grid-cols-1 sm:grid-cols-2 gap-7 mt-6">
+                            <div class="div bg rounded-xl flex justify-center flex-col items-center hover:shadow-lg transition-shadow">
+                                <img class="rounded-xl" src="pro1.png" alt="">
+                                <p class="text-gray-200 text-lg p-3 text-center">Streamline learning with an intuitive,
+                                    user-friendly LMS
+                                    frontend, enhancing education accessibility and engagement for all users.</p>
+                                <a href="https://github.com/udaysharmadev/LMS-Platform"
+                                    class="text-white bg-blue-700 rounded-xl px-3 py-2 w-1/2 text-center mb-3 text-l font-semibold"><button>View
+                                        Github <i class="ri-github-fill"></i></button></a>
+                            </div>
+                        
+                            <div class="div bg rounded-xl flex justify-center flex-col items-center hover:shadow-lg transition-shadow">
+                                <img class="rounded-xl" src="pro3.png" alt="">
+                                <p class="text-gray-200 text-lg p-3 text-center">A stunning, user-friendly, and dynamic
+                                    Instagram frontend clone with interactive and seamless design, optimized for visual
+                                    creativity.</p>
+                                <a href="https://github.com/udaysharmadev/Instagram-Desktop-Clone"
+                                    class="text-white bg-blue-700 rounded-xl px-3 py-2 w-1/2 text-center mb-3 text-l font-semibold"><button>View
+                                        Github <i class="ri-github-fill"></i></button></a>
+                            </div>
+                        
+                            <div class="div bg rounded-xl flex justify-center flex-col items-center mt-1 hover:shadow-lg transition-shadow">
+                                <img class="rounded-xl" src="pro4.png" alt="">
+                                <p class="text-gray-200 text-lg p-3 text-center">Designing a personalized portfolio
+                                    showcasing projects, skills, and achievements, with a focus on creativity, and user
+                                    experience.</p>
+                                <a href="https://github.com/udaysharmadev/Graphic-Designer-Portfolio"
+                                    class="text-white bg-blue-700 rounded-xl px-3 py-2 w-1/2 text-center mb-3 text-l font-semibold"><button>View
+                                        Github <i class="ri-github-fill"></i></button></a>
+                            </div>
+                        
+                            <div class="div bg rounded-xl flex justify-center flex-col items-center mt-1 hover:shadow-lg transition-shadow">
+                                <img class="rounded-xl" src="pro6.png" alt="">
+                                <p class="text-gray-200 text-lg p-3 text-center">Experience the Avengers in a 3D perspective
+                                    masonry gallery, showcasing iconic moments and characters in a dynamic layout.</p>
+                                <a href="https://github.com/udaysharmadev/Avengers-Masonry-Perspective-Gallery"
+                                    class="text-white bg-blue-700 rounded-xl px-3 py-2 w-1/2 text-center mb-3 text-l font-semibold"><button>View
+                                        Github <i class="ri-github-fill"></i></button></a>
+                            </div>
+                        </div>
+                        
+                        <style>
+                            .div:hover {
+                                
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                            }
+                        
+                            .div button {
+                                transition: transform 0.3s;
+                            }
+                        
+                            .div button:hover {
+                                transform: scale(1.05);
+                            }
+                        
+                            .div img {
+                                transition: transform 0.3s;
+                            }
+                        
+                            .div img:hover {
+                                transform: scale(1.1);
+                            }
+                        </style>
+                         
+
+                </div>
+
+                <hr id="techstack">
+
+                <div
+                    class="techstack w-full sm:w-screen xl:w-[46%] bg text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg flex flex-col items-center mt-6 sm:mt-0">
+                    <h3 class="card-title text-4xl mt-2 bg text-white font-bold rounded-xl hover:shadow-lg mb-8">
+                        Tech Stack</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div
+                            class="techstack w-full bg-orange-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>HTML</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-700 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>CSS</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-purple-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>EJS</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-green-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>HBS</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-indigo-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Bootstrap</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Tailwind</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-yellow-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>JavaScript</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-400 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>jQuery</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-900 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>JSON</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-green-400 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Node.js</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-green-600 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Express</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-green-300 text-black font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>MongoDB</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-yellow-600 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Firebase</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-200 text-black font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>React</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-gray-900 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Next</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-purple-600 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Redux</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-gray-300 text-gray-800 font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Vanilla</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-red-700 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Git</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-black text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Github</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-yellow-300 text-gray-800 font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Python</h2>
+                        </div>
+                    </div>
+
+
+
+                    <h3 class="card-title text-4xl mt-7 bg text-white font-bold rounded-xl hover:shadow-lg mb-5">
+                        Others</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div
+                            class="techstack w-full bg-orange-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>WordPress</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-700 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Wix</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-purple-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Shopify</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-green-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Figma</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-indigo-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>AutoCAD</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Canva</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-yellow-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Illustrator</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-400 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Photoshop</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-blue-900 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Blender</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-gray-700 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Flimora</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-gray-800 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Sketching</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-gray-300 text-black font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Weebly</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-green-800 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Joomla</h2>
+                        </div>
+                        <div
+                            class="techstack w-full bg-pink-500 text-white font-bold px-6 py-4 rounded-xl hover:shadow-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            <h2>Magento</h2>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            </section>
+
+            <hr id="about">
+
+            <h1
+                class="text-white w-full sm:w-full text-3xl mt-5 bg text-white font-bold rounded-xl hover:shadow-lg mb-8 px-6 py-4 font-poppins">
+                <span class="text-blue-600">About</span>
+                Me - The <span class="text-blue-600">Story</span> Behind The Tech
+            </h1>
+
+            <section
+                class="w-full sm:w-screen xl:w-[200%] flex flex-col sm:flex-row hover:shadow-lg font-poppins gap-10">
+                <div class="container gap-6 px-4 py-3 w-full sm:w-screen xl:w-[50%] -mt-3 rounded-xl bg">
+                    <div class="box">
+                        <img src="n1 (4).JPG" alt="image3" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="IMG_0468(3).jpg" alt="image2" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="IMG_0998.jpg" alt="image1" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="IMG_3825(1).JPG" alt="image2" loading="lazy">
+                    </div>
+
+                    <div class="box">
+                        <img src="IMG_9819.JPG" alt="image2" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="IMG_9822.JPG" alt="image3" loading="lazy">
+                    </div>
+
+                    <div class="box">
+                        <img src="IMG_6740.JPG" alt="image3" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="IMG_9759.JPG" alt="image3" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="n1 (2).JPG" alt="image3" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="n1 (3).jpg" alt="image3" loading="lazy">
+                    </div>
+
+
+                    <div class="box">
+                        <img src="n1 (1).JPG" alt="image3" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="IMG_0065.jpg" alt="image3" loading="lazy">
+                    </div>
+                    <div class="box">
+                        <img src="n1 (5).JPG" alt="image3" loading="lazy">
+                    </div>
+
+                    <div class="box">
+                        <img src="IMG_9711.JPG" alt="image3" loading="lazy">
+                    </div>
+
+                </div>
+
+                <div class="text text-white font-medium w-full sm:w-screen xl:w-[47%] -mt-10 sm:-mt-24 -translate-y-1 ">
+                    <div class=" bg rounded-xl px-7 py-8 h-[97%]">
+                        <p class="text-l font-medium font-poppins">I'm Uday Sharma, a 20-year-old BTech CSE student
+                            deeply
+                            passionate about technology. My journey into the world of tech started with a simple
+                            curiosity
+                            that blossomed into a full-fledged love for coding and innovation. As the founder of the ,
+                            <span class="text-blue-700">Dev Dynamos</span> coding club, I've had the opportunity to not
+                            only
+                            sharpen my skills but also lead my team to victory in various hackathons. <br>
+
+                            My <span class="text-red-700">Youtube</span> channel has been a platform where I share my
+                            knowledge and experiences, and it has grown to over <b>63,000</b> subscribers, enabling me
+                            to
+                            connect with a wide audience.Alongside my academic pursuits, I've ventured into
+                            entrepreneurship
+                            with the founding of <span class="text-yellow-300">Besh Cloth</span>, driven by my innate
+                            desire
+                            to create and innovate. <br> <br>
+
+
+                            The <span class="text-green-500">MERN</span> stack has been my playground, allowing me to
+                            craft
+                            dynamic and impactful web applications. This journey has been one of perseverance,
+                            creativity,
+                            and an unwavering drive to leave a mark in the tech industry.
+
+                            In my quest for knowledge, I've embraced challenges and setbacks as opportunities for
+                            learning
+                            and growth. This mindset has not only helped me overcome obstacles but has also fueled my
+                            curiosity to explore new technologies and their applications.
+
+                            My academic journey in BTech CSE has provided me with a solid foundation in computer science
+                            principles, which I've applied to real-world projects and challenges. This practical
+                            experience
+                            has been invaluable in shaping my skills and preparing me for a career in the tech industry.
+                            <br> <br>
+
+                            Looking ahead, I am excited about the endless possibilities that technology holds and am
+                            committed to making meaningful contributions to the field, pushing the boundaries of
+                            innovation.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <section
+                class="w-full sm:w-screen xl:w-[200%] flex flex-col-reverse sm:flex-row hover:shadow-lg font-poppins gap-10">
+                <div
+                    class="text-white bg-gradient-to-r from-red-700 to-red-800 rounded-xl px-7 py-6 font-medium w-full sm:w-screen xl:w-[53%] h-full mt-2 sm:mt-0 mb-1">
+                    <div id="subscriberCount" class="text-lg sm:text-2xl font-bold text-center sm:text-left"></div>
+                </div>
+
+
+                <div
+                    class="text bg text-white rounded-xl px-7 py-8 font-medium w-full bg sm:w-screen xl:w-[50%] h-full mt-2 sm:-mt-3 -mb-9 sm:mb-2">
+                    <h1 class="text-3xl bg text-white font-bold rounded-xl hover:shadow-lg font-poppins"><span
+                            class="text-red-700">YouTube</span> Channel Subscriber Count</h1>
+                </div>
+
+            </section>
+
+
+
+            <h1
+                class="text-white w-full sm:w-full text-3xl bg text-white font-bold rounded-xl hover:shadow-lg px-6 py-4 font-poppins mt-2 mb-8">
+                <span class="text-blue-600">Dev Dynamos</span> - Passion for Coding
+            </h1>
+
+            <section
+                class="w-full sm:w-screen xl:w-[200%] flex flex-col sm:flex-row hover:shadow-lg font-poppins gap-10">
+
+
+
+                <div class="text text-white font-medium w-full sm:w-screen xl:w-[53%] -mt-10 sm:-mt-24 -translate-y-1 ">
+                    <div class=" bg rounded-xl px-7 py-8 h-[81%] translate-y-6 sm:translate-y-20">
+                        <p class="text-l font-medium font-poppins">Dev Dynamos is not just about Uday Sharma and Sachin
+                            Verma; it's a
+                            collaborative effort driven by a dedicated team of individuals. Tanmay Tiwari, known for his
+                            innovative approach to design, adds a touch of creativity to every project. Jai Chawla, with
+                            his
+                            exceptional problem-solving skills, is a key player in tackling complex coding challenges.
+
+                            Sumit Rathore's attention to detail ensures that every line of code is meticulously crafted
+                            for
+                            optimal performance. Rajveer's enthusiasm for learning keeps the team motivated and
+                            inspired,
+                            while Harsh Raj's expertise in data structures and algorithms is invaluable during coding
+                            challenges.
+
+                            Together, these team members, along with others in the club, form a cohesive unit that is
+                            driving Dev Dynamos towards success. Their combined efforts have not only led to impressive
+                            performances in hackathons but have also created a vibrant community of learners and
+                            innovators
+                            within the college.
+
+                            As Dev Dynamos continues to grow and evolve, the contributions of each team member are
+                            instrumental in shaping the club's identity and impact. With a shared passion for coding and
+                            a
+                            commitment to excellence, the team members are paving the way for a brighter
+                            future in technology.</p>
+                    </div>
+                </div>
+
+
+                <div
+                    class="containerr gap-6 px-4 py-6 w-full sm:w-screen xl:w-[50%] -mt-3 rounded-xl bg -mt-10 sm:-mt-24 translate-y-4 sm:-translate-y-2">
+                    <div class="boxx rounded-xl">
+                        <img src="sachin.JPG" alt="Sachin" loading="lazy">
+                        <div class="name">Sachin Verma</div>
+                    </div>
+                    <div class="boxx rounded-xl">
+                        <img src="tiwari.JPG" alt="Tanmay" loading="lazy">
+                        <div class="name">Tanmay Tiwari</div>
+                    </div>
+                    <div class="boxx rounded-xl">
+                        <img src="rajveer.JPG" alt="Rajveer" loading="lazy">
+                        <div class="name">Rajveer</div>
+                    </div>
+                    <div class="boxx rounded-xl">
+                        <img src="harsh.jpg" alt="Harsh" loading="lazy">
+                        <div class="name">Harsh Raj</div>
+                    </div>
+                    <div class="boxx rounded-xl">
+                        <img src="jai.jpg" alt="Jai" loading="lazy">
+                        <div class="name">Jai Chawla</div>
+                    </div>
+                    <div class="boxx rounded-xl">
+                        <img src="sumit.JPG" alt="Sumit" loading="lazy">
+                        <div class="name">Sumit Rathore</div>
+                    </div>
+                </div>
+
+
+            </section>
+
+
+            <hr id="contact">
+            <section
+                class="w-full sm:w-screen xl:w-[200%] flex flex-col sm:flex-row hover:shadow-lg font-poppins gap-10">
+
+                <div
+                    class="form gap-6 px-8 py-6 w-full sm:w-screen xl:w-[50%] rounded-xl bg-blue-700 text-white shadow-md mt-3 sm:mt-0">
+
+                    <div class="detail">
+                        <h2 class="text-2xl text-indigo-200 font-semibold mb-12">Get In Touch</h2>
+                        <h1 class="text-4xl font-semibold">Let's Chat, Reach Out To Us</h1>
+                        <p class="mt-4 mb-2">Have a question or just want to say hi? Feel free to drop us a message
+                            anytime! We'd love to hear from you.</p>
+                        <hr class="my-6 border-t-1 border-gray-400 border-transparent">
+                    </div>
+
+                    <form action="https://api.web3forms.com/submit" method="POST">
+
+                        <input type="hidden" name="access_key" value="73b53c9f-350b-443e-9378-6cde3e0923f3">
+
+                        <label for="name" class="block mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name"
+                            class="w-full px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-indigo-500 mb-2 text-gray-900">
+
+                        <label for="email" class="block mt-3">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Your Email"
+                            class="w-full px-3 py-2 mt-2 rounded-lg border border-gray-200 focus:outline-none focus:border-indigo-500 mb-2 text-gray-900">
+
+                        <label for="message" class="block mt-2">Message</label>
+                        <textarea id="message" name="message" required placeholder="Leave us a Message"
+                            class="w-full px-3 py-2 mt-2 rounded-lg border border-gray-200 focus:outline-none focus:border-indigo-500 mb-2 text-gray-900"></textarea>
+
+                        <button type="submit"
+                            class="w-full text-white bg sm:w-1/3 font-semibold px-6 py-3 rounded-lg hover:bg-black transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-6">
+                            Submit Form
+                        </button>
+
+
+                    </form>
+
+                </div>
+
+
+
+                <div class="otherinfo gap-6  w-full sm:w-screen xl:w-[50%]  rounded-xl -mt-5 sm:mt-0 flex flex-col">
+                    <div class="img w-full sm:w-full h-1/2  mr-5 overflow-hidden rounded-xl ">
+                        <img class="rounded-xl w-full h-full sm:h-full object-cover transition-transform duration-300 transform hover:scale-105"
+                            src="wwcd.JPG" alt="">
+                    </div>
+                    <div
+                        class="epa w-full sm-w-full rounded-xl flex flex-col text-white gap-6 translate-y-0 sm:translate-y-4">
+                        <div class="phone  px-3 py-4 rounded-xl bg-blue-700 flex flex-row items-center">
+                            <i class="ri-whatsapp-line bg px-4 py-3 rounded-full text-2xl mr-4 transition duration-300 ease-in-out transform hover:scale-105"></i>
+
+                            <div class="andar flex flex-col items-left">
+                                <h1 class="text-xl sm:text-2xl font-bold">Whatsapp</h1>
+                                <a href="https://wa.link/rkaiml" class="text-sm">+91 8287758779</a>
+                            </div>
+
+                        </div>
+                        <div class="email  px-3 py-4 rounded-xl bg-blue-700 flex flex-row items-center">
+                            <i class="ri-mail-line bg px-4 py-3 rounded-full text-2xl mr-4 transition duration-300 ease-in-out transform hover:scale-105"></i>
+
+                            <div class=" andar flex flex-col items-left">
+                                <h1 class="text-xl sm:text-2xl font-bold">Email</h1>
+                                <a href="mailto:udaysharmaaaaa@gmail.com" class="text-sm">udaysharmaaaaa@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="address  px-3 py-4 rounded-xl bg-blue-700 flex flex-row items-center">
+                        <i class="ri-map-2-line bg px-4 py-3 rounded-full text-2xl mr-4 transition duration-300 ease-in-out transform hover:scale-105"></i>
+
+                            <div class=" andar flex flex-col items-left">
+                            <h1 class="text-xl sm:text-2xl font-bold">Address</h1>
+                            <a href="" class="text-sm">9/501 West Kanti Nagar ,Shahdra ,Delhi-51</a>
+                    </div>
+                </div>
+        </div>
+        </div>
+
+        </section>
+
+
+        <footer class="bg -px- w-full sm:w-screen xl:w-[200%] text-white  rounded-xl">
+            <div class="container mx-auto flex justify-center items-center">
+                <p class="text-sm text-center">&copy; 2024 Uday Sharma</p>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="heroright w-full sm:w-1/2 font-poppins order-first sm:order-last">
+            <div class="nav bg rounded-xl w-full text-white font-semibold text-lg sm:text-xl">
+                <ul class="flex flex-row justify-between items-center px-5 py-4 sm:px-10">
+                    <li class="mr-5 ml-2 transition-colors duration-300 hover:text-blue-500"><a
+                            href="#project">Projects</a>
+                    </li>
+                    <li class="mr-5 transition-colors duration-300 hover:text-blue-500"><a href="#about">About</a></li>
+                    <li class="mr-5 transition-colors duration-300 hover:text-blue-500"><a href="#techstack">Tech</a>
+                    </li>
+                    <li class="mr-5 transition-colors duration-300 hover:text-blue-500"><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="heroimg w-full flex flex-col sm:flex-row">
+                <div class="img w-full sm:w-1/2 h-full mt-4 sm:mt-6 mr-5 overflow-hidden rounded-xl">
+                    <img class="rounded-xl w-full h-64 object-cover transition-transform duration-300 transform hover:scale-105"
+                        src="Untitled design(65).png"
+                        alt="">
+                </div>
+
+                <div class="otherinfo mt-1 sm:mt-0 w-full sm:w-1/2 flex flex-col mx-auto font-poppins">
+
+                    <div class="resume w-full flex justify-center mt-2" ><a id="downloadResume" href="resume.pdf"
+                            class="bg-blue-700 text-white py-4 px-6 rounded-xl w-full text-l sm:text-lg block sm:hidden"><button
+                                class="w-full font-semibold">Download Resume <i
+                                    class="ri-download-cloud-2-line"></i></button></a></div>
+
+                    <div id="map"
+                        class="rounded-xl mt-3 sm:mt-5 transition duration-300 hover:border-blue-500 hover:shadow-lg"
+                        style="height: 150px; border: 1px solid transparent;"></div>
+                    <div class="socials flex bg text-white rounded-xl pl-8  sm:pl-3 py-6 mt-3 sm:mt-4">
+                        <ul class="flex flex-row items-center text-3xl sm:text-4xl justify-between align-center mx-auto">
+                            <li class="mr-5 transition-transform duration-300 hover:scale-110"><a
+                                    href="https://github.com/udaysharmadev"><i class="ri-github-fill"></i></a></li>
+                            <li class="mr-5 transition-transform duration-300 hover:scale-110"><a
+                                    href="https://www.linkedin.com/in/uday-sharma-5566a82b8"><i
+                                        class="ri-linkedin-box-fill text-blue-700"></i></a></li>
+                            <li class="mr-5 transition-transform duration-300 hover:scale-110"><a
+                                    href="https://www.instagram.com/udaysharmaaaaa/"><i
+                                        class="ri-instagram-line bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"></i></a>
+                            </li>
+                            <li class="mr-5 transition-transform duration-300 hover:scale-110"><a
+                                    href="https://www.youtube.com/@UdaySharmaaaaa"><i
+                                        class="ri-youtube-line text-red-500"></i></a></li>
+                            <li class="mr-5 transition-transform duration-300 hover:scale-110"><a
+                                    href="https://twitter.com/udaysharmaaaaa"><i
+                                        class="ri-twitter-x-line text-white"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <section class="font-poppins w-full sm:w-screen xl:w-[94%] ml-0 sm:ml-10 -mb-4 sm:-mb-0">
+                <div class="overview bg rounded-xl px-5 py-4 mt-5">
+                    <div class="upar flex justify-between items-center">
+                        <h1 class="text-white text-xl font-semibold sm:text-2xl">About</h1>
+                        <a id="downloadResume" class="text-gray-400 text-lg sm:text-xl transition duration-300 hover:text-gray-300 hover:underline"
+                            href="resume.pdf">Resume</a>
+                    </div>
+                    
+                    <script>
+                        const downloadLink = document.getElementById('downloadResume');
+                        
+                        downloadLink.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            
+                            const link = document.createElement('a');
+                            link.href = 'resume.pdf';
+                            link.download = 'resume.pdf';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        });
+                    </script>
+                    
+                    
+
+                    <div
+                        class="otext mt-6 sm:mt-3 flex items-center justify-between gap-5 sm:flex-row text-gray-300 transition duration-300 hover:text-white">
+                        <p class="py-2">Uday Sharma, a 20-year-old BTech CSE student, is a successful YouTuber with over
+                            63,000 subscribers. He founded the Dev Dynamos coding club, won multiple hackathons, and is
+                            a proficient MERN stack developer. Uday's entrepreneurial spirit led him to establish Besh
+                            Cloth Tech. His achievements highlight his dedication to technology and
+                            innovation, making him a notable figure in the tech community.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+    </main>
+
+    <button id="back-to-top-btn" class="fixed bottom-4 right-4 bg-blue-700 text-white px-4 py-2 rounded-md hidden">
+        <i class="ri-arrow-up-s-line"></i>
+    </button>
+
+
+
+
+
+
+
+    <script>
+        var map = L.map('map').setView([28.6682998, 77.2778542], 15);
+
+        // Add 3D buildings
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // Add a marker
+        L.marker([28.6682998, 77.2778542]).addTo(map)
+            .bindPopup('Uday Sharma')
+            .openPopup();
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const counters = document.querySelectorAll('.count');
+            const speed = 2000; // Slower animation speed
+
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20); // Increase timeout duration for slower animation
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+
+                updateCount();
+            });
+        });
+
+        const cards = document.querySelectorAll('.box');
+
+        cards.forEach(box => {
+            const img = box.querySelector('img');
+            const rect = img.getBoundingClientRect();
+            const containerRect = box.getBoundingClientRect();
+
+            const centerX = rect.left - containerRect.left + rect.width / 2;
+            const centerY = rect.top - containerRect.top + rect.height / 2;
+
+            img.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX - centerX;
+                const mouseY = e.clientY - centerY;
+
+                const rotateX = -mouseY / 20;
+                const rotateY = mouseX / 20;
+
+                img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = 'rotateX(0) rotateY(0)';
+            });
+        });
+
+
+        // Replace 'YOUR_API_KEY' and 'YOUR_CHANNEL_ID' with your actual API key and channel ID
+        const apiKey = 'AIzaSyDTM1QvVijv0byZ6O-6MCqUxN_0igvDQRg';
+        const channelId = 'UC_XSq7xqRwlloG_xTmpz_BQ';
+        const apiUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+
+        function fetchSubscriberCount() {
+            // Add a cache-busting parameter to the API request URL
+            const timestamp = new Date().getTime();
+            const url = `${apiUrl}&timestamp=${timestamp}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const subscriberCount = data.items[0].statistics.subscriberCount;
+                    document.getElementById('subscriberCount').textContent = `Subscriber Count : ${subscriberCount}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching data: ', error);
+                });
+        }
+
+        fetchSubscriberCount(); // Fetch subscriber count when the page loads
+
+        // Update subscriber count every 30 seconds
+        setInterval(fetchSubscriberCount, 30000);
+
+
+
+
+
+
+
+        window.addEventListener('scroll', function () {
+            var backToTopButton = document.getElementById('back-to-top-btn');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('back-to-top-btn').addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

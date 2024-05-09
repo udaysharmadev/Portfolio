@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('path/to/poppins.woff2') format('woff2'),
+         url('path/to/poppins.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.card-description {
+    margin-bottom: 10px;
+    color: rgb(214, 231, 245);
+}
+
+.card-languages {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-language {
+    margin-right: 6px;
+    margin-bottom: 6px;
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
